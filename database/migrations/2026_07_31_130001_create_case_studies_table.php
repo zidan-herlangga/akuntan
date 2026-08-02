@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('case_studies', function (Blueprint $table) {
+            $table->id();
+            $table->string('client_name');
+            $table->string('slug')->unique();
+            $table->string('industry')->nullable();
+            $table->text('challenge');
+            $table->text('solution');
+            $table->text('results');
+            $table->json('metrics')->nullable();
+            $table->boolean('nda_compliant')->default(false);
+            $table->boolean('is_featured')->default(false);
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+
+            $table->index(['is_active', 'is_featured']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('case_studies');
+    }
+};

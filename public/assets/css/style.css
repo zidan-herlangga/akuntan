@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-heading {
+  font-family: 'Montserrat', 'Lato', ui-sans-serif, system-ui, sans-serif;
+}
+
+.nav-link,
+.btn-primary,
+.btn-outline,
+.field-input,
+.select-card label,
+.slot-chip label,
+.date-chip,
+.faq-item summary {
+  font-family: 'Open Sans', 'Lato', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------- Header ---------- */
+#site-header {
+  background: transparent;
+  transition: background .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+#site-header.is-scrolled {
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 14px 36px -22px rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.78);
+  transition: color .25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  background: #3b82f6;
+  transition: width .3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ---------- Reveal animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.22, .61, .36, 1), transform .7s cubic-bezier(.22, .61, .36, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Hero blobs ---------- */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* ---------- Text gradient ---------- */
+.text-gradient {
+  background: linear-gradient(100deg, #93c5fd 0%, #60a5fa 45%, #dbeafe 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 9999px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  font-size: .875rem;
+  padding: .8rem 1.6rem;
+  transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 8px 20px -10px rgba(37, 99, 235, 0.45);
+}
+
+.btn-primary:hover {
+  background: #3b82f6;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -10px rgba(37, 99, 235, 0.5);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-weight: 600;
+  font-size: .875rem;
+  padding: .8rem 1.6rem;
+  transition: background .25s ease, border-color .25s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Cards ---------- */
+.card-hover {
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 0 18px 40px -26px rgba(15, 23, 42, 0.3);
+}
+
+/* ---------- Service icon tile ---------- */
+.icon-tile {
+  transition: background .3s ease, transform .3s ease;
+}
+
+.group:hover .icon-tile {
+  transform: scale(1.08);
+}
+
+/* ---------- Testimonial slider ---------- */
+.testimonial-track {
+  display: flex;
+  transition: transform .6s cubic-bezier(.22, .61, .36, 1);
+}
+
+.testimonial-slide {
+  min-width: 100%;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  width: 28px;
+  background: #2563eb;
+}
+
+/* ---------- Booking wizard ---------- */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(100, 116, 139, 1);
+  transition: color .3s ease;
+}
+
+.step-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(203, 213, 225, 1);
+  background: #fff;
+  font-weight: 600;
+  font-size: .875rem;
+  color: #64748b;
+  transition: all .3s ease;
+  flex-shrink: 0;
+}
+
+.step-indicator.active .step-dot {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 6px 16px -8px rgba(37, 99, 235, 0.6);
+}
+
+.step-indicator.active {
+  color: #0f172a;
+}
+
+.step-indicator.done .step-dot {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #fff;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(203, 213, 225, 1);
+  margin: 0 .75rem;
+  transition: background .3s ease;
+}
+
+.step-line.done {
+  background: #2563eb;
+}
+
+/* ---------- Time slot chips ---------- */
+.slot-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slot-chip label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem 1rem;
+  border-radius: .75rem;
+  border: 1.5px solid rgba(226, 232, 240, 1);
+  background: #fff;
+  font-size: .875rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.slot-chip input:checked + label {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.slot-chip input:disabled + label {
+  opacity: .4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  background: #f1f5f9;
+}
+
+/* ---------- Available date chips ---------- */
+.date-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .5rem .9rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(226, 232, 240, 1);
+  background: #fff;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.date-chip:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.date-chip.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.date-chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 .35rem;
+  border-radius: 9999px;
+  background: #e2e8f0;
+  font-size: .6875rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.date-chip.active .date-chip-count {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* ---------- Radio-select cards ---------- */
+.select-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.select-card label {
+  display: block;
+  cursor: pointer;
+  border: 1.5px solid rgba(226, 232, 240, 1);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all .2s ease;
+}
+
+.select-card input:checked + label {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* ---------- Forms ---------- */
+.field-input {
+  width: 100%;
+  border-radius: .75rem;
+  border: 1.5px solid rgba(226, 232, 240, 1);
+  padding: .7rem 1rem;
+  font-size: .875rem;
+  color: #0f172a;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.field-input::placeholder {
+  color: #94a3b8;
+}
+
+/* ---------- FAQ ---------- */
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-icon {
+  transition: transform .3s ease;
+}
+
+/* ---------- Timeline ---------- */
+.step-connector {
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, #2563eb, rgba(37, 99, 235, 0.08));
+}
+
+/* ---------- Misc ---------- */
+.mask-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
