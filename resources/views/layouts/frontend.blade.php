@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <title>@yield('title', 'Drs. Chaeroni & Rekan — Kantor Akuntan Publik')</title>
-  <meta name="description" content="@yield('meta_description', ' Drs. Chaeroni & Rekan — Kantor Akuntan Publik terdaftar di Kementerian Keuangan RI. Jasa audit & asurans, perpajakan, dan konsultasi bisnis. Reservasi konsultasi online mudah.')" />
+  <title>@yield('title', 'Drs. Chaeroni & Rekan - Kantor Akuntan Publik')</title>
+  <meta name="description" content="@yield('meta_description', ' Drs. Chaeroni & Rekan - Kantor Akuntan Publik terdaftar di Kementerian Keuangan RI. Jasa audit & asurans, perpajakan, dan konsultasi bisnis. Reservasi konsultasi online mudah.')" />
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel="icon" href="{{ asset('assets/logo/LOGO-KAP-Drs.-CHAERONI-REKAN-150x150.webp') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.css" />
@@ -41,7 +41,7 @@
     <div class="flex items-center justify-between h-20">
       
       <!-- Brand Logo -->
-      <a href="/" class="flex items-center gap-2.5 shrink-0">
+      <a href="{{ route('home') }}" class="flex items-center gap-2.5 shrink-0">
         <span class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-blue-500/30">
           <img src="{{ asset('assets/logo/LOGO-KAP-Drs.-CHAERONI-REKAN-150x150.webp') }}" alt="Logo KAP Drs. Chaeroni &amp; Rekan" class="w-10 h-10 object-contain" loading="lazy" />
         </span>
@@ -55,18 +55,18 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
-        <a href="/" class="nav-link{{ $active === 'home' ? ' active' : '' }}">Beranda</a>
-        <a href="/layanan" class="nav-link{{ $active === 'layanan' ? ' active' : '' }}">Layanan</a>
-        <a href="/tentang" class="nav-link{{ $active === 'tentang' ? ' active' : '' }}">Tentang Kami</a>
-        <a href="/portofolio" class="nav-link{{ $active === 'portofolio' ? ' active' : '' }}">Portofolio</a>
-        <a href="/blog" class="nav-link{{ $active === 'blog' ? ' active' : '' }}">Blog</a>
-        <a href="/karir" class="nav-link{{ $active === 'karir' ? ' active' : '' }}">Karir</a>
-        <a href="/kontak" class="nav-link{{ $active === 'kontak' ? ' active' : '' }}">Kontak</a>
+        <a href="{{ route('home') }}" class="nav-link{{ $active === 'home' ? ' active' : '' }}">Beranda</a>
+        <a href="{{ route('services') }}" class="nav-link{{ $active === 'layanan' ? ' active' : '' }}">Layanan</a>
+        <a href="{{ route('about') }}" class="nav-link{{ $active === 'tentang' ? ' active' : '' }}">Tentang Kami</a>
+        <a href="{{ route('case-studies') }}" class="nav-link{{ $active === 'portofolio' ? ' active' : '' }}">Portofolio</a>
+        <a href="{{ route('blog') }}" class="nav-link{{ $active === 'blog' ? ' active' : '' }}">Blog</a>
+        <a href="{{ route('career') }}" class="nav-link{{ $active === 'karir' ? ' active' : '' }}">Karir</a>
+        <a href="{{ route('contact') }}" class="nav-link{{ $active === 'kontak' ? ' active' : '' }}">Kontak</a>
       </nav>
 
       <!-- Desktop Button -->
       <div class="hidden lg:flex items-center gap-3">
-        <a href="/reservasi" class="inline-flex items-center gap-2 rounded-full bg-blue-500 hover:bg-blue-400 text-white text-sm font-semibold px-6 py-3 transition shadow-lg shadow-blue-500/25{{ $active === 'reservasi' ? ' ring-2 ring-white/30' : '' }}">
+        <a href="{{ route('booking') }}" class="inline-flex items-center gap-2 rounded-full bg-blue-500 hover:bg-blue-400 text-white text-sm font-semibold px-6 py-3 transition shadow-lg shadow-blue-500/25{{ $active === 'reservasi' ? ' ring-2 ring-white/30' : '' }}">
           Reservasi Konsultasi
           <i class="fa-solid fa-arrow-right text-[16px]"></i>
         </a>
@@ -159,7 +159,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
       <div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-12 lg:grid-cols-4">
         <div class="col-span-2 lg:col-span-1">
-          <a href="/" class="flex items-center gap-2.5">
+          <a href="{{ route('home') }}" class="flex items-center gap-2.5">
             <img src="{{ asset('assets/logo/LOGO-KAP-Drs.-CHAERONI-REKAN-150x150.webp') }}" alt="Logo KAP Drs. Chaeroni &amp; Rekan" class="w-10 h-10 object-contain" />
             <span class="text-lg font-bold text-white font-heading tracking-tight"> Drs. Chaeroni <span class="text-blue-400">&amp; Rekan</span></span>
           </a>
@@ -219,7 +219,7 @@
               </li>
               <li class="flex gap-3">
                 <i class="fa-solid fa-clock text-[20px] text-blue-400 shrink-0"></i>
-                <span class="text-slate-400">Senin–Jumat, 08.00–17.00</span>
+                <span class="text-slate-400">Senin-Jumat, 08.00-17.00</span>
               </li>
             </ul>
           </div>
@@ -229,12 +229,24 @@
       <div class="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 text-center sm:text-left">
         <p>&copy; {{ date('Y') }} Drs. Chaeroni &amp; Rekan. Hak cipta dilindungi.</p>
         <div class="flex items-center gap-6">
-          <a href="#" class="hover:text-slate-300 transition">Kebijakan Privasi</a>
-          <a href="#" class="hover:text-slate-300 transition">Syarat & Ketentuan</a>
+          <a href="{{ route('privacy') }}" class="hover:text-slate-300 transition">Kebijakan Privasi</a>
+          <a href="{{ route('terms') }}" class="hover:text-slate-300 transition">Syarat & Ketentuan</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/6285179588486" target="_blank" rel="noopener" aria-label="Chat WhatsApp"
+    class="floating-fab fixed bottom-6 left-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg shadow-green-500/40 transition hover:scale-110 hover:bg-green-600">
+    <i class="fa-brands fa-whatsapp text-[28px]"></i>
+  </a>
+
+  <!-- Go to Top -->
+  <button id="go-to-top" aria-label="Kembali ke atas"
+    class="floating-fab fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white shadow-lg shadow-blue-500/40 transition opacity-0 pointer-events-none hover:bg-blue-500">
+    <i class="fa-solid fa-arrow-up text-[18px]"></i>
+  </button>
 
   <script src="{{ asset('assets/js/main.js') }}"></script>
   @stack('scripts')

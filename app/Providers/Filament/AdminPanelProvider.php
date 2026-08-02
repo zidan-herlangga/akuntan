@@ -6,6 +6,7 @@ use App\Filament\Widgets\BookingStatsWidget;
 use App\Filament\Widgets\RecentBookingsWidget;
 use App\Http\Middleware\ApplyCsp;
 use App\Http\Middleware\EnsureMfaVerified;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -16,6 +17,8 @@ use Filament\PanelProvider;
 use Filament\Enums\DatabaseNotificationsPosition;
 use Filament\Enums\UserMenuPosition;
 use Filament\Support\Colors\Color;
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets\AccountWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -49,8 +52,9 @@ class AdminPanelProvider extends PanelProvider
                 BookingStatsWidget::class,
                 RecentBookingsWidget::class,
             ])
-            ->userMenu(position: UserMenuPosition::Sidebar)
-            ->databaseNotifications(position: DatabaseNotificationsPosition::Sidebar)
+            ->userMenu()
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('15s')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -67,5 +71,19 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
                 EnsureMfaVerified::class,
             ]);
+    }
+
+    public function boot(): void
+    {
+        Filament::serving(function (): void {
+            FilamentView::registerRenderHook(
+                PanelsRenderHook::BODY_END,
+                fn (): string => '<script>
+                    document.addEventListener("livewire:init", () => {
+                        setInterval(() => Livewire.dispatch("refresh-page"), 15000);
+                    });
+                </script>',
+            );
+        });
     }
 }

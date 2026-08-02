@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-Reservasi Konsultasi — Drs. Chaeroni & Rekan
+Reservasi Konsultasi - Drs. Chaeroni & Rekan
 @endsection
 
 @section('meta_description')
@@ -24,11 +24,15 @@ reservasi
 
   <!-- ======= PAGE BANNER ======= -->
   <section class="relative bg-brand-950 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="{{ asset('assets/hero/reservasi.webp') }}" alt="Reservasi konsultasi  Drs. Chaeroni & Rekan" class="w-full h-full object-cover opacity-40" loading="lazy" />
+      <div class="absolute inset-0 bg-brand-950/90"></div>
+    </div>
     <div class="blob w-[420px] h-[420px] bg-blue-500/20 -top-32 -right-20"></div>
     <div class="blob w-[320px] h-[320px] bg-blue-500/10 bottom-0 -left-24"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 lg:pt-44 lg:pb-20">
       <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6">
-        <a href="/" class="hover:text-blue-400 transition">Beranda</a>
+        <a href="{{ route('home') }}" class="hover:text-blue-400 transition">Beranda</a>
         <i class="fa-solid fa-chevron-right text-[12px]"></i>
         <span class="text-slate-200">Reservasi</span>
       </nav>
@@ -111,7 +115,7 @@ reservasi
         <!-- STEP 2: SERVICE, CONSULTANT & SCHEDULE -->
         <div data-step class="hidden px-6 sm:px-10 py-10">
           <h2 class="font-heading text-xl font-bold text-slate-900">Pilih Layanan & Jadwal</h2>
-          <p class="mt-1 text-sm text-slate-500">Pilih layanan — konsultan yang sesuai akan langsung tampil. Setiap sesi berlangsung 45 menit via Google Meet atau tatap muka di kantor.</p>
+          <p class="mt-1 text-sm text-slate-500">Pilih layanan - konsultan yang sesuai akan langsung tampil. Setiap sesi berlangsung 45 menit via Google Meet atau tatap muka di kantor.</p>
 
           <div class="mt-7">
             <p class="text-sm font-semibold text-slate-700 mb-3">Layanan</p>
@@ -140,7 +144,7 @@ reservasi
                 <input type="radio" name="consultant" value="" disabled />
                 <label>
                   <div class="flex items-center gap-3">
-                    <span class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-700 to-slate-900 flex items-center justify-center text-sm font-bold text-white shrink-0">...</span>
+                    <span class="w-11 h-11 rounded-full bg-blue-700 flex items-center justify-center text-sm font-bold text-white shrink-0">...</span>
                     <div class="flex-1">
                       <p class="font-semibold text-slate-900 text-sm">Memuat konsultan...</p>
                       <p class="text-xs text-slate-500 mt-0.5">Mengambil data dari server</p>
@@ -165,7 +169,7 @@ reservasi
             <div id="slot-list" class="grid grid-cols-3 sm:grid-cols-5 gap-3">
               <p class="text-sm text-slate-400 col-span-full">Pilih tanggal dan konsultan terlebih dahulu untuk melihat slot waktu.</p>
             </div>
-            <p class="mt-3 text-xs text-slate-400">Slot yang tersedia ditampilkan. Jumlah terbatas — segera konfirmasi.</p>
+            <p class="mt-3 text-xs text-slate-400">Slot yang tersedia ditampilkan. Jumlah terbatas - segera konfirmasi.</p>
           </div>
 
           <div class="mt-8 flex items-center justify-between">
@@ -252,8 +256,8 @@ reservasi
             <p class="mt-2 text-sm text-blue-700">Terima kasih! Tim kami akan mengonfirmasi jadwal Anda melalui WhatsApp dalam 1×24 jam kerja.</p>
             <p class="mt-3 text-sm text-blue-700">Nomor reservasi Anda: <strong id="booking-number" class="text-blue-900">-</strong></p>
             <div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
-              <a href="/" class="inline-flex justify-center items-center gap-2 rounded-full bg-white border border-blue-200 text-blue-700 font-semibold px-6 py-3 text-sm hover:bg-blue-100 transition">Kembali ke Beranda</a>
-              <a href="/blog" class="inline-flex justify-center items-center gap-2 rounded-full bg-blue-600 text-white font-semibold px-6 py-3 text-sm hover:bg-blue-500 transition">Baca Artikel Kami</a>
+              <a href="{{ route('home') }}" class="inline-flex justify-center items-center gap-2 rounded-full bg-white border border-blue-200 text-blue-700 font-semibold px-6 py-3 text-sm hover:bg-blue-100 transition">Kembali ke Beranda</a>
+              <a href="{{ route('blog') }}" class="inline-flex justify-center items-center gap-2 rounded-full bg-blue-600 text-white font-semibold px-6 py-3 text-sm hover:bg-blue-500 transition">Baca Artikel Kami</a>
             </div>
           </div>
         </div>
@@ -332,9 +336,17 @@ reservasi
   }
 
   function formatTime(iso) {
-    var d = new Date(iso);
-    var hh = ('0' + d.getHours()).slice(-2);
-    var mm = ('0' + d.getMinutes()).slice(-2);
+    var parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Jakarta',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    }).formatToParts(new Date(iso));
+    var hh = '', mm = '';
+    parts.forEach(function (p) {
+      if (p.type === 'hour') hh = p.value;
+      if (p.type === 'minute') mm = p.value;
+    });
     return hh + '.' + mm;
   }
 
@@ -415,7 +427,7 @@ reservasi
         '<div class="select-card">',
         '  <input type="radio" id="' + inputId + '" name="consultant" value="' + c.id + '" data-label="' + esc(c.name) + '" required />',
         '  <label for="' + inputId + '"><div class="flex items-center gap-3">',
-        '    <span class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-700 to-slate-900 flex items-center justify-center text-sm font-bold text-white shrink-0">' + esc(initials(c.name)) + '</span>',
+        '    <span class="w-11 h-11 rounded-full bg-blue-700 flex items-center justify-center text-sm font-bold text-white shrink-0">' + esc(initials(c.name)) + '</span>',
         '    <div class="flex-1"><p class="font-semibold text-slate-900 text-sm">' + esc(c.name) + '</p>',
         '      <p class="text-xs text-slate-500 mt-0.5">' + esc(c.specialization || '') + '</p></div>',
         '  </div></label>',

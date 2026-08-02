@@ -7,9 +7,11 @@ namespace Tests\Feature;
 use App\Enums\BookingStatus;
 use App\Filament\Resources\Articles\Pages\CreateArticle;
 use App\Filament\Resources\Bookings\Pages\EditBooking;
+use App\Jobs\SendBookingConfirmedJob;
 use App\Models\Booking;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Spatie\Permission\Models\Role;
@@ -44,6 +46,15 @@ class AdminPanelTest extends TestCase
             ->get('/admin')
             ->assertSuccessful()
             ->assertSee('admin');
+    }
+
+    public function test_sidebar_badge_refresh_script_is_injected(): void
+    {
+        $this->actingAs($this->admin)
+            ->get('/admin')
+            ->assertSuccessful()
+            ->assertSee('refresh-page')
+            ->assertSee('15000');
     }
 
     #[DataProvider('resourcePaths')]
@@ -101,5 +112,23 @@ class AdminPanelTest extends TestCase
             'id' => $booking->id,
             'status' => BookingStatus::Confirmed,
         ]);
+    }
+
+    public function test_confirm_booking_dispatches_confirmed_email_job(): void
+    {
+        $booking = Booking::factory()->create(['status' => BookingStatus::Pending]);
+
+        Queue::fake();
+
+        $this->actingAs($this->admin);
+
+        Livewire::test(EditBooking::class, ['record' => $booking->getKey()])
+            ->callAction('confirm')
+            ->assertHasNoErrors();
+
+        Queue::assertPushed(
+            SendBookingConfirmedJob::class,
+            fn (SendBookingConfirmedJob $job): bool => $job->booking->is($booking),
+        );
     }
 }

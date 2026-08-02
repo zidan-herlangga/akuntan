@@ -372,6 +372,35 @@
     if (valid) applyFilter(initial);
   }
 
+  /* ---------- Go to top ---------- */
+  var goTop = document.getElementById('go-to-top');
+  if (goTop) {
+    var showGoTop = function () {
+      var visible = window.scrollY > 400;
+      goTop.classList.toggle('opacity-0', !visible);
+      goTop.classList.toggle('pointer-events-none', !visible);
+    };
+    window.addEventListener('scroll', showGoTop, { passive: true });
+    showGoTop();
+    goTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  var faqItems = document.querySelectorAll('.faq-item');
+  if (faqItems.length) {
+    faqItems.forEach(function (item) {
+      item.addEventListener('toggle', function () {
+        if (item.open) {
+          faqItems.forEach(function (other) {
+            if (other !== item) other.open = false;
+          });
+        }
+      });
+    });
+  }
+
   /* ---------- Footer year ---------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

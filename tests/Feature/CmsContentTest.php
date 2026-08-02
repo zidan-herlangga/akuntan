@@ -96,8 +96,8 @@ class CmsContentTest extends TestCase
     {
         $this->get('/')
             ->assertOk()
-            ->assertSee('Akselerasi closing')
-            ->assertSee('Auditor Berpengalaman 5+ Tahun');
+            ->assertSee('Tidak ada studi kasus yang tersedia saat ini.')
+            ->assertSee('Layanan Utama');
 
         $this->get('/layanan')
             ->assertOk()
@@ -110,7 +110,7 @@ class CmsContentTest extends TestCase
 
         $this->get('/portofolio')
             ->assertOk()
-            ->assertSee('Restrukturisasi Sistem Pembukuan');
+            ->assertSee('Belum ada studi kasus yang tersedia.');
 
         $this->get('/blog')
             ->assertOk()

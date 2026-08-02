@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-    Blog & Artikel — Drs. Chaeroni & Rekan
+    Blog & Artikel - Drs. Chaeroni & Rekan
 @endsection
 
 @section('meta_description')
@@ -16,11 +16,15 @@
 
     <!-- ======= PAGE BANNER ======= -->
     <section class="relative bg-brand-950 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="{{ asset('assets/hero/blog.webp') }}" alt="Blog & artikel  Drs. Chaeroni & Rekan" class="w-full h-full object-cover opacity-40" loading="lazy" />
+            <div class="absolute inset-0 bg-brand-950/90"></div>
+        </div>
         <div class="blob w-[420px] h-[420px] bg-blue-500/20 -top-32 -right-20"></div>
         <div class="blob w-[320px] h-[320px] bg-blue-500/10 bottom-0 -left-24"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 lg:pt-44 lg:pb-24">
             <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6">
-                <a href="/" class="hover:text-blue-400 transition">Beranda</a>
+                <a href="{{ route('home') }}" class="hover:text-blue-400 transition">Beranda</a>
                 <i class="fa-solid fa-chevron-right text-[12px]"></i>
                 <span class="text-slate-200">Blog</span>
             </nav>
@@ -40,12 +44,12 @@
         $featured = $articles->first();
         $gridArticles = $articles->slice(1);
         $gradients = [
-            'from-blue-700 to-slate-900',
-            'from-blue-600 to-slate-900',
-            'from-blue-900 to-slate-950',
-            'from-blue-800 to-slate-950',
-            'from-blue-700 to-slate-950',
-            'from-slate-600 to-slate-900',
+            'bg-blue-700',
+            'bg-blue-600',
+            'bg-blue-900',
+            'bg-blue-800',
+            'bg-blue-700',
+            'bg-slate-600',
         ];
         $formatBlogDate = fn($date) => $date ? $date->isoFormat('D MMMM YYYY') : '';
         $blogInitials = fn($text) => collect(str_word_count($text, 1))
@@ -71,15 +75,15 @@
                     @endif
 
                     @if ($featured)
-                        <a href="/blog/{{ $featured->slug }}"
+                        <a href="{{ route('blog-detail', $featured->slug) }}"
                             class="reveal group bg-white rounded-3xl border border-slate-100 overflow-hidden card-hover grid lg:grid-cols-2">
                             <div class="h-64 lg:h-auto relative overflow-hidden">
                                 @if ($featured->image_url)
                                     <img src="{{ $featured->image_url }}" alt="{{ $featured->title }}"
                                         class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-                                    <div class="absolute inset-0 bg-gradient-to-br from-blue-950/60 to-slate-950/70"></div>
+                                    <div class="absolute inset-0 bg-blue-950/60"></div>
                                 @else
-                                    <div class="absolute inset-0 bg-gradient-to-br from-blue-700 to-slate-900"></div>
+                                    <div class="absolute inset-0 bg-blue-700"></div>
                                     <span
                                         class="absolute inset-0 flex items-center justify-center font-heading text-white font-bold text-3xl tracking-wide">{{ $blogInitials($featured->title) }}</span>
                                 @endif
@@ -104,10 +108,10 @@
                             </div>
                         </a>
                     @elseif (! $activeCategory)
-                        <a href="/blog/contoh-artikel"
+                        <a href="{{ route('blog-detail', 'contoh-artikel') }}"
                             class="reveal group bg-white rounded-3xl border border-slate-100 overflow-hidden card-hover grid lg:grid-cols-2">
                             <div class="h-64 lg:h-auto relative overflow-hidden">
-                                <div class="absolute inset-0 bg-gradient-to-br from-blue-700 to-slate-900"></div>
+                                <div class="absolute inset-0 bg-blue-700"></div>
                                 <span
                                     class="absolute inset-0 flex items-center justify-center font-heading text-white font-bold text-3xl tracking-wide">{{ $blogInitials('Cara Menghitung PPh 21 Terbaru 2026') }}</span>
                                 <span
@@ -143,7 +147,7 @@
                                             class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105" />
                                     @else
                                         <div
-                                            class="absolute inset-0 bg-gradient-to-br {{ $gradients[$index % count($gradients)] }}">
+                                            class="absolute inset-0 {{ $gradients[$index % count($gradients)] }}">
                                         </div>
                                         <span
                                             class="absolute inset-0 flex items-center justify-center font-heading text-white font-bold text-xl tracking-wide">{{ $blogInitials($article->title) }}</span>
@@ -156,10 +160,10 @@
                                         <span>{{ $formatBlogDate($article->published_at) }}</span>
                                         <span>· {{ $readingMinutes($article->body) }} menit baca</span>
                                     </div>
-                                    <a href="/blog/{{ $article->slug }}"
+                                    <a href="{{ route('blog-detail', $article->slug) }}"
                                         class="mt-4 font-heading text-lg font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition">{{ $article->title }}</a>
                                     <p class="mt-3 text-sm text-slate-600 leading-relaxed">{{ Str::limit($article->excerpt, 40) }}</p>
-                                    <a href="/blog/{{ $article->slug }}"
+                                    <a href="{{ route('blog-detail', $article->slug) }}"
                                         class="mt-auto pt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600">Baca
                                         artikel
                                         <i class="fa-solid fa-arrow-right text-[16px]"></i>
@@ -204,7 +208,7 @@
                         <ul class="mt-5 space-y-5">
                             @forelse ($latest as $item)
                                 <li>
-                                    <a href="/blog/{{ $item->slug }}" class="group block">
+                                    <a href="{{ route('blog-detail', $item->slug) }}" class="group block">
                                         <p class="text-xs text-slate-400">{{ $formatBlogDate($item->published_at) }}</p>
                                         <p
                                             class="mt-1 text-sm font-semibold text-slate-800 group-hover:text-blue-600 transition leading-snug">

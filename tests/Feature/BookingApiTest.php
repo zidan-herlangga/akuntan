@@ -217,6 +217,34 @@ class BookingApiTest extends TestCase
             ->assertJsonPath('data.1.count', 1);
     }
 
+    public function test_slots_endpoint_serializes_times_in_app_timezone(): void
+    {
+        $previousTz = date_default_timezone_get();
+        config()->set('app.timezone', 'Asia/Jakarta');
+        date_default_timezone_set('Asia/Jakarta');
+
+        try {
+            $consultant = Consultant::factory()->create(['is_active' => true]);
+            $startsAt = now()->addDays(2)->setTime(9, 0);
+
+            ScheduleSlot::factory()->create([
+                'consultant_id' => $consultant->id,
+                'starts_at' => $startsAt,
+                'status' => SlotStatus::Available,
+            ]);
+
+            $response = $this->getJson("/api/booking/slots/{$consultant->id}/{$startsAt->format('Y-m-d')}");
+
+            $response->assertOk()
+                ->assertJsonPath('data.0.starts_at', $startsAt->toIso8601String());
+
+            $this->assertStringContainsString('T09:00:00+07:00', $response->json('data.0.starts_at'));
+        } finally {
+            config()->set('app.timezone', 'UTC');
+            date_default_timezone_set($previousTz);
+        }
+    }
+
     public function test_service_booking_binds_service_correctly(): void
     {
         $service = Service::factory()->create(['is_active' => true]);

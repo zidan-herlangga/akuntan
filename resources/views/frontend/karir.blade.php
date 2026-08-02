@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-Karir — Drs. Chaeroni & Rekan
+Karir - Drs. Chaeroni & Rekan
 @endsection
 
 @section('meta_description')
@@ -16,11 +16,15 @@ karir
 
   <!-- ======= PAGE BANNER ======= -->
   <section class="relative bg-brand-950 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="{{ asset('assets/hero/karir.webp') }}" alt="Karir di  Drs. Chaeroni & Rekan" class="w-full h-full object-cover opacity-40" loading="lazy" />
+      <div class="absolute inset-0 bg-brand-950/90"></div>
+    </div>
     <div class="blob w-[420px] h-[420px] bg-blue-500/20 -top-32 -right-20"></div>
     <div class="blob w-[320px] h-[320px] bg-blue-500/10 bottom-0 -left-24"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 lg:pt-44 lg:pb-24">
       <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6">
-        <a href="/" class="hover:text-blue-400 transition">Beranda</a>
+        <a href="{{ route('home') }}" class="hover:text-blue-400 transition">Beranda</a>
         <i class="fa-solid fa-chevron-right text-[12px]"></i>
         <span class="text-slate-200">Karir</span>
       </nav>

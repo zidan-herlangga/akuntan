@@ -12,7 +12,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class BookingConfirmation extends Mailable implements ShouldQueue
+class BookingConfirmed extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -21,14 +21,14 @@ class BookingConfirmation extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Konfirmasi Reservasi Konsultasi -  Drs. Chaeroni & Rekan',
+            subject: 'Reservasi Anda Telah Dikonfirmasi - Drs. Chaeroni & Rekan',
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.booking-confirmation',
+            markdown: 'mail.booking-confirmed',
             with: [
                 'booking' => $this->booking,
                 'consultant' => $this->booking->consultant,

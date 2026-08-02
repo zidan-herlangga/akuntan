@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\CaseStudy;
+use App\Models\Consultant;
 use App\Models\Service;
 use App\Models\TeamMember;
 use Illuminate\Http\Request;
@@ -33,6 +34,12 @@ class FrontendController extends Controller
                 ->orderBy('id')
                 ->limit(4)
                 ->get(),
+            'stats' => [
+                ['value' => TeamMember::where('is_active', true)->count(), 'suffix' => '', 'label' => 'Tenaga Profesional'],
+                ['value' => Consultant::where('is_active', true)->count(), 'suffix' => '', 'label' => 'Konsultan Tersedia'],
+                ['value' => Service::where('is_active', true)->count(), 'suffix' => '', 'label' => 'Layanan Utama'],
+                ['value' => Article::published()->count(), 'suffix' => '+', 'label' => 'Artikel & Wawasan'],
+            ],
         ]);
     }
 

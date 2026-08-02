@@ -1,9 +1,9 @@
 <x-mail::message>
-# Konfirmasi Reservasi
+# Reservasi Dikonfirmasi
 
 Halo **{{ $booking->client_name }}**,
 
-Terima kasih. Reservasi konsultasi Anda telah kami terima dan saat ini sedang menunggu konfirmasi dari tim kami.
+Kabar baik! Reservasi konsultasi Anda telah **dikonfirmasi** oleh tim Drs. Chaeroni & Rekan.
 
 <x-mail::panel>
 ### Detail Reservasi
@@ -15,7 +15,12 @@ Terima kasih. Reservasi konsultasi Anda telah kami terima dan saat ini sedang me
 * **Waktu:** {{ $booking->starts_at->timezone($consultant->timezone ?? 'Asia/Jakarta')->format('H:i') }} - {{ $booking->ends_at->timezone($consultant->timezone ?? 'Asia/Jakarta')->format('H:i') }} {{ $consultant->timezone_abbr ?? 'WIB' }}
 </x-mail::panel>
 
-Tim kami akan menghubungi Anda melalui WhatsApp untuk mengonfirmasi jadwal serta mengirimkan tautan pertemuan (*meeting link*).
+@if ($booking->meeting_link)
+Tautan pertemuan (Google Meet) untuk konsultasi Anda:
+[{{ $booking->meeting_link }}]({{ $booking->meeting_link }})
+@else
+Tautan pertemuan (Google Meet) akan kami kirimkan melalui WhatsApp menjelang jadwal konsultasi.
+@endif
 
 Jika Anda memiliki pertanyaan mendesak, silakan balas email ini.
 

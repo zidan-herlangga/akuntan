@@ -97,7 +97,12 @@ return [
                 'https://cdnjs.cloudflare.com',
             ]],
             [Directive::FORM_ACTION, Keyword::SELF],
-            [Directive::FRAME, [Keyword::SELF, 'https://challenges.cloudflare.com']],
+            [Directive::FRAME, [
+                Keyword::SELF,
+                'https://challenges.cloudflare.com',
+                'https://www.google.com',
+                'https://maps.google.com',
+            ]],
             [Directive::IMG, [Keyword::SELF, 'data:', 'https:']],
             [Directive::MEDIA, Keyword::SELF],
             [Directive::OBJECT, Keyword::NONE],

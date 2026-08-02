@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::updateOrCreate(
-            ['email' => 'admin@mci.co.id'],
+            ['email' => 'admin@kapmci.co.id'],
             [
                 'name' => 'Administrator ',
                 'password' => Hash::make('password'),

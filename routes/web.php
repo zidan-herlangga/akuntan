@@ -17,6 +17,8 @@ Route::get('/blog/{slug}', [FrontendController::class, 'blogDetail'])->name('blo
 Route::get('/karir', [FrontendController::class, 'career'])->name('career');
 Route::view('/reservasi', 'frontend.reservasi')->name('booking');
 Route::view('/kontak', 'frontend.kontak')->name('contact');
+Route::view('/kebijakan-privasi', 'frontend.privasi')->name('privacy');
+Route::view('/syarat-ketentuan', 'frontend.syarat')->name('terms');
 
 Route::post('/kontak', [ContactController::class, 'store'])
     ->middleware('throttle:5,1')

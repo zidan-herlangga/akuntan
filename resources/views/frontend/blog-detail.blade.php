@@ -9,7 +9,7 @@
 @endphp
 
 @section('title')
-{{ $articleTitle }} — Blog Drs. Chaeroni & Rekan
+{{ $articleTitle }} - Blog Drs. Chaeroni & Rekan
 @endsection
 
 @section('meta_description')
@@ -24,12 +24,16 @@ blog
 
   <!-- ======= ARTICLE HERO ======= -->
   <section class="relative bg-brand-950 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="{{ asset('assets/hero/blog.webp') }}" alt="Artikel  Drs. Chaeroni & Rekan" class="w-full h-full object-cover opacity-40" loading="lazy" />
+      <div class="absolute inset-0 bg-brand-950/90"></div>
+    </div>
     <div class="blob w-[420px] h-[420px] bg-blue-500/20 -top-32 -right-20"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 lg:pt-44 lg:pb-20">
       <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6">
-        <a href="/" class="hover:text-blue-400 transition">Beranda</a>
+        <a href="{{ route('home') }}" class="hover:text-blue-400 transition">Beranda</a>
         <i class="fa-solid fa-chevron-right text-[12px]"></i>
-        <a href="/blog" class="hover:text-blue-400 transition">Blog</a>
+        <a href="{{ route('blog') }}" class="hover:text-blue-400 transition">Blog</a>
         <i class="fa-solid fa-chevron-right text-[12px]"></i>
         <span class="text-slate-200">Artikel</span>
       </nav>
@@ -88,24 +92,24 @@ blog
               {!! $article->body !!}
             </article>
 
-            <div class="mt-10 rounded-3xl bg-gradient-to-br from-blue-800 to-slate-900 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="mt-10 rounded-3xl bg-blue-800 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <p class="font-heading text-xl font-bold text-white">Butuh bantuan pajak?</p>
                 <p class="mt-1 text-sm text-blue-50">Konsultasikan kebutuhan pajak Anda secara gratis.</p>
               </div>
-              <a href="/reservasi" class="inline-flex items-center gap-2 rounded-full bg-white text-blue-700 font-semibold px-6 py-3 text-sm hover:bg-blue-50 transition shrink-0">
+              <a href="{{ route('booking') }}" class="inline-flex items-center gap-2 rounded-full bg-white text-blue-700 font-semibold px-6 py-3 text-sm hover:bg-blue-50 transition shrink-0">
                 Reservasi Konsultasi
                 <i class="fa-solid fa-arrow-right text-[16px]"></i>
               </a>
             </div>
 
             <div class="mt-10 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-100 p-6">
-              <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-700 to-slate-900 flex items-center justify-center text-white">
+                <span class="w-14 h-14 rounded-2xl bg-blue-700 flex items-center justify-center text-white">
                 <i class="fa-solid fa-landmark text-xl"></i>
               </span>
               <div>
                 <p class="font-heading font-bold text-slate-900">Tim Drs. Chaeroni & Rekan</p>
-                <p class="text-sm text-slate-500">Kantor Akuntan Publik — Audit, Perpajakan, dan Konsultasi Bisnis</p>
+                <p class="text-sm text-slate-500">Kantor Akuntan Publik - Audit, Perpajakan, dan Konsultasi Bisnis</p>
               </div>
             </div>
             </div>
@@ -134,12 +138,12 @@ blog
               </article>
 
               <div class="mt-10 flex items-center gap-4 rounded-2xl bg-slate-50 border border-slate-100 p-6">
-                <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-700 to-slate-900 flex items-center justify-center text-white">
+              <span class="w-14 h-14 rounded-2xl bg-blue-700 flex items-center justify-center text-white">
                   <i class="fa-solid fa-landmark text-xl"></i>
                 </span>
                 <div>
                   <p class="font-heading font-bold text-slate-900">Tim Drs. Chaeroni & Rekan</p>
-                  <p class="text-sm text-slate-500">Kantor Akuntan Publik — Audit, Perpajakan, dan Konsultasi Bisnis</p>
+                  <p class="text-sm text-slate-500">Kantor Akuntan Publik - Audit, Perpajakan, dan Konsultasi Bisnis</p>
                 </div>
               </div>
             </div>
@@ -164,7 +168,7 @@ blog
             <ul class="mt-5 space-y-5">
               @forelse ($latest as $item)
                 <li>
-                  <a href="/blog/{{ $item->slug }}" class="group block">
+                  <a href="{{ route('blog-detail', $item->slug) }}" class="group block">
                     <p class="text-xs text-slate-400">{{ $formatBlogDate($item->published_at) }}</p>
                     <p class="mt-1 text-sm font-semibold text-slate-800 group-hover:text-blue-600 transition leading-snug">{{ $item->title }}</p>
                   </a>
@@ -194,12 +198,12 @@ blog
       <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 reveal">Artikel Terkait</h2>
       <div class="mt-10 grid md:grid-cols-3 gap-6">
         @forelse ($related as $item)
-          <a href="/blog/{{ $item->slug }}" class="reveal group bg-white rounded-3xl border border-slate-100 overflow-hidden card-hover flex flex-col">
+          <a href="{{ route('blog-detail', $item->slug) }}" class="reveal group bg-white rounded-3xl border border-slate-100 overflow-hidden card-hover flex flex-col">
             <div class="h-40 relative overflow-hidden">
               @if ($item->image_url)
                 <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105" />
               @else
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-slate-900"></div>
+                <div class="absolute inset-0 bg-blue-600"></div>
                 <span class="absolute inset-0 flex items-center justify-center font-heading text-white font-bold text-xl tracking-wide">{{ $blogInitials($item->title) }}</span>
               @endif
             </div>

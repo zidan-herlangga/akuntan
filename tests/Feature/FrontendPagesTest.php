@@ -42,8 +42,10 @@ class FrontendPagesTest extends TestCase
         $content = $this->get('/')->getContent();
 
         $this->assertStringNotContainsString('.html"', $content);
-        $this->assertStringContainsString('href="/layanan"', $content);
-        $this->assertStringContainsString('href="/reservasi"', $content);
+        $this->assertStringContainsString(sprintf('href="%s"', route('services')), $content);
+        $this->assertStringContainsString(sprintf('href="%s"', route('booking')), $content);
+        $this->assertStringNotContainsString('href="/layanan"', $content);
+        $this->assertStringNotContainsString('href="/reservasi"', $content);
         $this->assertStringContainsString('assets/css/style.css', $content);
     }
 

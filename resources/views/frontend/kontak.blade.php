@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-Kontak — Drs. Chaeroni & Rekan
+Kontak - Drs. Chaeroni & Rekan
 @endsection
 
 @section('meta_description')
@@ -16,74 +16,90 @@ kontak
 
   <!-- ======= PAGE BANNER ======= -->
   <section class="relative bg-brand-950 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="{{ asset('assets/hero/kontak.webp') }}" alt="Kantor  Drs. Chaeroni & Rekan" class="w-full h-full object-cover opacity-40" loading="lazy" />
+      <div class="absolute inset-0 bg-brand-950/90"></div>
+    </div>
     <div class="blob w-[420px] h-[420px] bg-blue-500/20 -top-32 -right-20"></div>
     <div class="blob w-[320px] h-[320px] bg-blue-500/10 bottom-0 -left-24"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 lg:pt-44 lg:pb-24">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 lg:pt-44 lg:pb-20">
       <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6">
-        <a href="/" class="hover:text-blue-400 transition">Beranda</a>
+        <a href="{{ route('home') }}" class="hover:text-blue-400 transition">Beranda</a>
         <i class="fa-solid fa-chevron-right text-[12px]"></i>
         <span class="text-slate-200">Kontak</span>
       </nav>
       <div class="max-w-3xl reveal">
         <p class="text-sm font-semibold text-blue-400 uppercase tracking-wider">Hubungi Kami</p>
         <h1 class="mt-3 font-heading text-4xl sm:text-5xl font-extrabold text-white leading-tight">Mari Bicara tentang Keuangan Bisnis Anda</h1>
-        <p class="mt-5 text-slate-300 text-lg">Tim kami siap menjawab pertanyaan Anda — atau jadwalkan konsultasi gratis 30 menit dengan konsultan ahli.</p>
+        <p class="mt-5 text-slate-300 text-lg">Tim kami siap menjawab pertanyaan Anda - atau jadwalkan konsultasi gratis 30 menit dengan konsultan ahli.</p>
       </div>
     </div>
   </section>
 
   <!-- ======= CONTACT ======= -->
-  <section class="py-24 bg-slate-50">
+  <section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-5 gap-10">
+      <div class="grid lg:grid-cols-5 gap-8">
 
         <!-- info -->
-        <div class="lg:col-span-2 space-y-6">
-          <div class="reveal bg-white rounded-3xl border border-slate-100 p-8 flex gap-5">
-            <span class="w-14 h-14 shrink-0 rounded-2xl bg-blue-100 flex items-center justify-center">
-              <i class="fa-solid fa-phone text-[28px] text-blue-600"></i>
-            </span>
-            <div>
-              <h3 class="font-heading font-bold text-slate-900">Telepon & WhatsApp</h3>
-              <p class="mt-2 text-sm text-slate-600">+62 21 532 1037 (Jakarta)<br />+62 851 7958 8486 (Bekasi)<br />+62 24 7004 4067 (Semarang)</p>
-            </div>
-          </div>
+        <div class="lg:col-span-2">
+          <div class="reveal bg-white rounded-3xl border border-slate-100 p-8 sm:p-10">
+            <h2 class="font-heading text-xl font-bold text-slate-900">Info Kontak</h2>
+            <p class="mt-2 text-sm text-slate-500">Hubungi kami melalui kanal di bawah ini.</p>
 
-          <div class="reveal bg-white rounded-3xl border border-slate-100 p-8 flex gap-5">
-            <span class="w-14 h-14 shrink-0 rounded-2xl bg-blue-100 flex items-center justify-center">
-              <i class="fa-solid fa-envelope text-[28px] text-blue-600"></i>
-            </span>
-            <div>
-              <h3 class="font-heading font-bold text-slate-900">Email</h3>
-              <p class="mt-2 text-sm text-slate-600">info@mci.co.id (Jakarta)<br />office.bks@mci.co.id (Bekasi)<br />office.smg@mci.co.id (Semarang)</p>
-            </div>
-          </div>
-
-          <div class="reveal bg-white rounded-3xl border border-slate-100 p-8 flex gap-5">
-            <span class="w-14 h-14 shrink-0 rounded-2xl bg-blue-100 flex items-center justify-center">
-              <i class="fa-solid fa-location-dot text-[28px] text-blue-600"></i>
-            </span>
-            <div>
-              <h3 class="font-heading font-bold text-slate-900">Kantor</h3>
-              <p class="mt-2 text-sm text-slate-600">Jl. Anggrek Nelimurni IIA/C-5, Slipi<br />Jakarta Barat 11480</p>
-            </div>
-          </div>
-
-          <div class="reveal bg-white rounded-3xl border border-slate-100 p-8 flex gap-5">
-            <span class="w-14 h-14 shrink-0 rounded-2xl bg-blue-100 flex items-center justify-center">
-              <i class="fa-solid fa-clock text-[28px] text-blue-600"></i>
-            </span>
-            <div>
-              <h3 class="font-heading font-bold text-slate-900">Jam Operasional</h3>
-              <p class="mt-2 text-sm text-slate-600">Senin – Jumat: 08.00 – 17.00<br />Sabtu & Minggu: tutup</p>
-            </div>
+            <ul class="mt-8 space-y-6">
+              <li class="flex gap-4">
+                <span class="w-11 h-11 shrink-0 rounded-xl bg-blue-100 flex items-center justify-center">
+                  <i class="fa-solid fa-phone text-lg text-blue-600"></i>
+                </span>
+                <div>
+                  <h3 class="font-heading text-sm font-bold text-slate-900">Telepon & WhatsApp</h3>
+                  <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+                    <a href="tel:+62215321037" class="hover:text-blue-600 transition">+62 21 532 1037</a> (Jakarta)<br />
+                    <a href="tel:+6285179588486" class="hover:text-blue-600 transition">+62 851 7958 8486</a> (Bekasi)<br />
+                    <a href="tel:+622470044067" class="hover:text-blue-600 transition">+62 24 7004 4067</a> (Semarang)
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <span class="w-11 h-11 shrink-0 rounded-xl bg-blue-100 flex items-center justify-center">
+                  <i class="fa-solid fa-envelope text-lg text-blue-600"></i>
+                </span>
+                <div>
+                  <h3 class="font-heading text-sm font-bold text-slate-900">Email</h3>
+                  <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+                    <a href="mailto:info@mci.co.id" class="hover:text-blue-600 transition">info@mci.co.id</a> (Jakarta)<br />
+                    <a href="mailto:office.bks@mci.co.id" class="hover:text-blue-600 transition">office.bks@mci.co.id</a> (Bekasi)<br />
+                    <a href="mailto:office.smg@mci.co.id" class="hover:text-blue-600 transition">office.smg@mci.co.id</a> (Semarang)
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <span class="w-11 h-11 shrink-0 rounded-xl bg-blue-100 flex items-center justify-center">
+                  <i class="fa-solid fa-location-dot text-lg text-blue-600"></i>
+                </span>
+                <div>
+                  <h3 class="font-heading text-sm font-bold text-slate-900">Kantor Pusat</h3>
+                  <p class="mt-1 text-sm text-slate-600 leading-relaxed">Jl. Anggrek Nelimurni IIA/C-5, Slipi<br />Jakarta Barat 11480</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <span class="w-11 h-11 shrink-0 rounded-xl bg-blue-100 flex items-center justify-center">
+                  <i class="fa-solid fa-clock text-lg text-blue-600"></i>
+                </span>
+                <div>
+                  <h3 class="font-heading text-sm font-bold text-slate-900">Jam Operasional</h3>
+                  <p class="mt-1 text-sm text-slate-600 leading-relaxed">Senin - Jumat: 08.00 - 17.00<br />Sabtu &amp; Minggu: tutup</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
 
         <!-- form -->
         <div class="lg:col-span-3">
-          <div class="reveal bg-white rounded-3xl border border-slate-100 p-8 sm:p-12">
-            <h2 class="font-heading text-2xl font-bold text-slate-900">Kirim Pesan</h2>
+          <div class="reveal bg-white rounded-3xl border border-slate-100 p-8 sm:p-10 h-full">
+            <h2 class="font-heading text-xl font-bold text-slate-900">Kirim Pesan</h2>
             <p class="mt-2 text-sm text-slate-500">Isi formulir di bawah dan tim kami akan merespons dalam 1×24 jam kerja.</p>
 
             <form id="contact-form" class="mt-8 grid sm:grid-cols-2 gap-5" novalidate>
@@ -141,24 +157,27 @@ kontak
   </section>
 
   <!-- ======= MAP ======= -->
-  <section class="bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-      <div class="reveal rounded-3xl bg-brand-950 p-2 overflow-hidden">
-        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-brand-900 to-brand-950 min-h-[320px] flex items-center justify-center">
-          <div class="blob w-72 h-72 bg-blue-500/15 -top-20 -left-20"></div>
-          <div class="blob w-72 h-72 bg-blue-500/15 -bottom-20 -right-20"></div>
-          <div class="relative text-center px-6">
-            <span class="mx-auto w-16 h-16 rounded-2xl bg-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/40">
-              <i class="fa-solid fa-location-dot text-[32px] text-white"></i>
-            </span>
-            <p class="mt-5 font-heading text-xl font-bold text-white"> Drs. Chaeroni &amp; Rekan — Kantor Pusat Jakarta</p>
-            <p class="mt-2 text-sm text-slate-400 max-w-md mx-auto">Jl. Anggrek Nelimurni IIA/C-5, Slipi, Jakarta Barat 11480. Cabang kami juga hadir di Bekasi dan Semarang.</p>
-            <a href="https://www.google.com/maps/place/+Drs+Chaeroni+dan+Rekan/@-6.187779,106.794833,20z/data=!4m5!3m4!1s0x0:0x1e0b48b830d1c5f!8m2!3d-6.1877789!4d106.7948333?hl=en-US" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 rounded-full bg-white text-blue-700 font-semibold px-6 py-3 text-sm hover:bg-blue-50 transition">
-              Buka di Google Maps
-              <i class="fa-solid fa-arrow-right text-[16px]"></i>
-            </a>
+  <section class="bg-slate-50 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal rounded-3xl overflow-hidden border border-slate-100 shadow-sm bg-white">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6">
+          <div>
+            <h2 class="font-heading text-xl font-bold text-slate-900">Lokasi Kantor Pusat</h2>
+            <p class="mt-1 text-sm text-slate-500">Drs. Chaeroni &amp; Rekan - Jl. Anggrek Nelimurni IIA/C-5, Slipi, Jakarta Barat 11480</p>
           </div>
+          <a href="https://www.google.com/maps/place/+Drs+Chaeroni+dan+Rekan/@-6.187779,106.794833,20z/data=!4m5!3m4!1s0x0:0x1e0b48b830d1c5f!8m2!3d-6.1877789!4d106.7948333?hl=en-US" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-blue-600 text-white font-semibold px-5 py-2.5 text-sm hover:bg-blue-500 transition shrink-0">
+            Buka di Google Maps
+            <i class="fa-solid fa-arrow-up-right-from-square text-[14px]"></i>
+          </a>
         </div>
+        <iframe
+          src="https://www.google.com/maps?q=Drs.+Chaeroni+dan+Rekan,+Jl.+Anggrek+Nelimurni+IIA%2FC-5,+Slipi,+Jakarta+Barat+11480&hl=id&z=17&output=embed"
+          title="Peta lokasi Drs. Chaeroni &amp; Rekan"
+          class="w-full h-[420px] block"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>

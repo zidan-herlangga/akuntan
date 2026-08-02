@@ -7,6 +7,7 @@ namespace App\Filament\Resources\Bookings\Pages;
 use App\Actions\Booking\CancelBookingAction;
 use App\Enums\BookingStatus;
 use App\Filament\Resources\Bookings\BookingResource;
+use App\Jobs\SendBookingConfirmedJob;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
@@ -25,6 +26,8 @@ class EditBooking extends EditRecord
                 ->visible(fn (): bool => $this->record->status === BookingStatus::Pending)
                 ->action(function (): void {
                     $this->record->update(['status' => BookingStatus::Confirmed]);
+
+                    SendBookingConfirmedJob::dispatch($this->record);
 
                     $this->redirect(request()->header('Referer', $this->getUrl(['record' => $this->record])));
                 }),

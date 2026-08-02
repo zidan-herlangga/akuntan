@@ -1,11 +1,11 @@
 @extends('layouts.frontend')
 
 @section('title')
-Drs. Chaeroni & Rekan — Kantor Akuntan Publik
+Drs. Chaeroni & Rekan - Kantor Akuntan Publik
 @endsection
 
 @section('meta_description')
-Drs. Chaeroni & Rekan — Kantor Akuntan Publik terdaftar di Kementerian Keuangan RI. Jasa audit & asurans, perpajakan, dan konsultasi bisnis. Reservasi konsultasi online mudah.
+Drs. Chaeroni & Rekan - Kantor Akuntan Publik terdaftar di Kementerian Keuangan RI. Jasa audit & asurans, perpajakan, dan konsultasi bisnis. Reservasi konsultasi online mudah.
 @endsection
 
 @section('active')
@@ -21,9 +21,9 @@ home
       'consulting' => '<i class="fa-solid fa-handshake text-blue-600 text-[28px]"></i>',
     ];
     $caseGradients = [
-      'bg-gradient-to-br from-brand-900 to-brand-950',
-      'bg-gradient-to-br from-blue-800 to-slate-900',
-      'bg-gradient-to-br from-slate-800 to-slate-950',
+      'bg-brand-900',
+      'bg-blue-800',
+      'bg-slate-800',
     ];
   @endphp
 
@@ -32,8 +32,8 @@ home
     {{-- Background image + overlay gelap agar teks tetap kontras --}}
     <div class="absolute inset-0 z-0">
       <img src="{{ asset('assets/skyscraper-office-building-lamp-post-3196390.webp') }}" alt="Gedung kantor  Drs. Chaeroni & Rekan" class="w-full h-full object-cover opacity-78" loading="lazy" />
-      <div class="absolute inset-0 bg-gradient-to-b from-brand-950/95 via-brand-950/90 to-brand-950"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-brand-950/90"></div>
+      <div class="absolute inset-0 bg-brand-950/40"></div>
     </div>
 
     {{-- Blob dekoratif di atas overlay --}}
@@ -80,86 +80,16 @@ home
             </div>
           </div>
         </div>
-
-        {{-- <div class="reveal relative">
-          <div class="rounded-3xl bg-white/5 border border-white/10 p-2 backdrop-blur-sm">
-            <div class="rounded-2xl bg-gradient-to-br from-brand-900 to-brand-950 p-8 sm:p-10">
-              <div class="flex items-center justify-between">
-                <p class="text-xs font-medium tracking-wider text-slate-400 uppercase">Ringkasan Laporan</p>
-                <span class="text-xs text-blue-300 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">Terkini</span>
-              </div>
-              <div class="mt-6 flex items-end gap-2">
-                <p class="font-heading text-4xl sm:text-5xl font-bold text-white">Rp 2,4<span class="text-lg">M</span></p>
-                <p class="text-slate-400 text-sm mb-1.5">+18.4%</p>
-              </div>
-              <p class="text-slate-400 text-sm mt-1">Total Aset Bersih — PT Mitra Nusantara</p>
-
-              <div class="mt-8 grid grid-cols-3 gap-3">
-                <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-                  <p class="text-xs text-slate-400">Pendapatan</p>
-                  <p class="mt-1 font-semibold text-blue-300">Rp 890J</p>
-                  <p class="text-[10px] text-blue-400/80">+22% YoY</p>
-                </div>
-                <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-                  <p class="text-xs text-slate-400">Beban Pajak</p>
-                  <p class="mt-1 font-semibold text-blue-300">Rp 120J</p>
-                  <p class="text-[10px] text-slate-500">Komplian</p>
-                </div>
-                <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-                  <p class="text-xs text-slate-400">Arus Kas</p>
-                  <p class="mt-1 font-semibold text-blue-300">Positif</p>
-                  <p class="text-[10px] text-slate-500">Stabil</p>
-                </div>
-              </div>
-
-              <div class="mt-8 rounded-xl bg-white/5 border border-white/10 p-5">
-                <div class="flex items-center justify-between text-sm mb-3">
-                  <p class="text-slate-300">Bulanan</p>
-                  <p class="text-xs text-blue-300">+Rp 42J</p>
-                </div>
-                <div class="flex items-end gap-1.5 h-20">
-                  <div class="flex-1 rounded-t bg-white/10 h-[40%]"></div>
-                  <div class="flex-1 rounded-t bg-white/10 h-[55%]"></div>
-                  <div class="flex-1 rounded-t bg-white/10 h-[35%]"></div>
-                  <div class="flex-1 rounded-t bg-blue-400/80 h-[65%]"></div>
-                  <div class="flex-1 rounded-t bg-white/10 h-[50%]"></div>
-                  <div class="flex-1 rounded-t bg-white/10 h-[72%]"></div>
-                  <div class="flex-1 rounded-t bg-blue-400/80 h-[85%]"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="absolute -bottom-6 -left-4 sm:-left-8 bg-white rounded-2xl shadow-2xl shadow-brand-950/30 p-4 flex items-center gap-3">
-            <span class="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center">
-              <i class="fa-solid fa-circle-check text-blue-600 text-[20px]"></i>
-            </span>
-            <div>
-              <p class="text-sm font-semibold text-slate-800">Laporan Siap Audit</p>
-              <p class="text-xs text-slate-500">Disusun sesuai SAK ETAP</p>
-            </div>
-          </div>
-        </div> --}}
       </div>
 
       <!-- Stats -->
       <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur-sm">
-          <p class="font-heading text-3xl font-bold text-white"><span data-counter="75" data-suffix="+">0</span></p>
-          <p class="mt-1 text-sm text-slate-400">Tenaga Profesional</p>
-        </div>
-        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur-sm">
-          <p class="font-heading text-3xl font-bold text-white"><span data-counter="14">0</span></p>
-          <p class="mt-1 text-sm text-slate-400">Auditor Berpengalaman 5+ Tahun</p>
-        </div>
-        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur-sm">
-          <p class="font-heading text-3xl font-bold text-white"><span data-counter="3">0</span></p>
-          <p class="mt-1 text-sm text-slate-400">Kantor di Indonesia</p>
-        </div>
-        <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur-sm">
-          <p class="font-heading text-3xl font-bold text-white"><span data-counter="98" data-suffix="%">0</span></p>
-          <p class="mt-1 text-sm text-slate-400">Kepuasan Klien</p>
-        </div>
+        @foreach ($stats as $stat)
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur-sm">
+            <p class="font-heading text-3xl font-bold text-white"><span data-counter="{{ $stat['value'] }}" data-suffix="{{ $stat['suffix'] }}">0</span></p>
+            <p class="mt-1 text-sm text-slate-400">{{ $stat['label'] }}</p>
+          </div>
+        @endforeach
       </div>
     </div>
   </section>
@@ -215,7 +145,7 @@ home
       <div class="max-w-2xl reveal">
         <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider">Layanan Kami</p>
         <h2 class="mt-3 font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Jasa Profesional Audit, Perpajakan, dan Konsultasi Bisnis</h2>
-        <p class="mt-4 text-slate-600">Kami menyediakan jasa profesional di bidang audit &amp; asurans, perpajakan, dan konsultasi bisnis — dikerjakan tim berpengalaman dan disesuaikan dengan kebutuhan perusahaan Anda.</p>
+        <p class="mt-4 text-slate-600">Kami menyediakan jasa profesional di bidang audit &amp; asurans, perpajakan, dan konsultasi bisnis - dikerjakan tim berpengalaman dan disesuaikan dengan kebutuhan perusahaan Anda.</p>
       </div>
 
       <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -275,7 +205,7 @@ home
                   </span>
                   <div>
                     <p class="font-semibold text-white">Integrity</p>
-                    <p class="mt-1 text-sm text-slate-400">Kami memegang teguh nilai, keyakinan, dan prinsip — jujur, independen, dan berkarakter.</p>
+                    <p class="mt-1 text-sm text-slate-400">Kami memegang teguh nilai, keyakinan, dan prinsip - jujur, independen, dan berkarakter.</p>
                   </div>
                 </li>
               </ul>
@@ -289,16 +219,16 @@ home
 
         <div class="reveal order-1 lg:order-2">
           <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider">Nilai Kami (MCI)</p>
-          <h2 class="mt-3 font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Kami Berkomitmen Mengerjakan Setiap Pekerjaan — dengan Cara yang Benar</h2>
+          <h2 class="mt-3 font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Kami Berkomitmen Mengerjakan Setiap Pekerjaan - dengan Cara yang Benar</h2>
           <p class="mt-5 text-slate-600 leading-relaxed">Sebagai Kantor Akuntan Publik terdaftar, kami membantu klien mencapai tujuan bisnis melalui keahlian, kejujuran, dan si mental yang independen.</p>
           <div class="mt-8 grid sm:grid-cols-2 gap-6">
             <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6">
-              <p class="font-heading text-3xl font-bold text-blue-600">75+</p>
+              <p class="font-heading text-3xl font-bold text-blue-600">{{ $stats[0]['value'] }}<span class="text-xl">{{ $stats[0]['suffix'] }}</span></p>
               <p class="mt-1 text-sm text-slate-600">tenaga profesional tetap di bidang audit, pajak, dan konsultasi</p>
             </div>
             <div class="rounded-2xl bg-slate-50 border border-slate-100 p-6">
-              <p class="font-heading text-3xl font-bold text-blue-600">3</p>
-              <p class="mt-1 text-sm text-slate-600">kantor cabang yang melayani klien di Indonesia</p>
+              <p class="font-heading text-3xl font-bold text-blue-600">{{ $stats[2]['value'] }}</p>
+              <p class="mt-1 text-sm text-slate-600">layanan utama: audit, perpajakan, dan konsultasi bisnis</p>
             </div>
           </div>
           <a href="{{ route('about') }}" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-500">
@@ -337,7 +267,7 @@ home
             </span>
           </div>
           <h3 class="mt-5 font-heading text-lg font-bold text-slate-900">Atur Jadwal</h3>
-          <p class="mt-2 text-sm text-slate-600 leading-relaxed">Pilih konsultan dan slot waktu yang sesuai — konfirmasi dalam hitungan jam.</p>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">Pilih konsultan dan slot waktu yang sesuai - konfirmasi dalam hitungan jam.</p>
         </div>
         <div class="reveal relative bg-white rounded-2xl border border-slate-100 p-8 card-hover">
           <div class="flex items-center justify-between md:block">
@@ -402,55 +332,8 @@ home
             </div>
           </div>
         @empty
-          <div class="reveal group rounded-3xl bg-gradient-to-br from-brand-900 to-brand-950 p-8 card-hover relative overflow-hidden">
-            <div class="blob w-40 h-40 bg-blue-500/20 -top-10 -right-10"></div>
-            <p class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Manufaktur</p>
-            <h3 class="mt-4 font-heading text-xl font-bold text-white">PT Nusa Tex</h3>
-            <p class="mt-3 text-sm text-slate-400 leading-relaxed">Restrukturisasi pembukuan & implementasi ERP untuk produksi tekstil 3 pabrik.</p>
-            <div class="mt-6 grid grid-cols-2 gap-4">
-              <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-                <p class="font-heading text-2xl font-bold text-blue-400">+35%</p>
-                <p class="text-xs text-slate-400 mt-1">Efisiensi biaya</p>
-              </div>
-              <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-                <p class="font-heading text-2xl font-bold text-blue-400">3x</p>
-                <p class="text-xs text-slate-400 mt-1">Akselerasi closing</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal group rounded-3xl bg-gradient-to-br from-blue-800 to-slate-900 p-8 card-hover relative overflow-hidden">
-            <div class="blob w-40 h-40 bg-white/15 -top-10 -right-10"></div>
-            <p class="text-xs font-semibold text-blue-100 uppercase tracking-wider">Ritel</p>
-            <h3 class="mt-4 font-heading text-xl font-bold text-white">Garda Bakti Retail</h3>
-            <p class="mt-3 text-sm text-blue-50/80 leading-relaxed">Penataan laporan keuangan untuk memperoleh pembiayaan ekspansi 20 cabang.</p>
-            <div class="mt-6 grid grid-cols-2 gap-4">
-              <div class="rounded-xl bg-white/10 border border-white/20 p-4">
-                <p class="font-heading text-2xl font-bold text-white">Rp 25M</p>
-                <p class="text-xs text-blue-50/80 mt-1">Pembiayaan disetujui</p>
-              </div>
-              <div class="rounded-xl bg-white/10 border border-white/20 p-4">
-                <p class="font-heading text-2xl font-bold text-white">6 bulan</p>
-                <p class="text-xs text-blue-50/80 mt-1">Proses audit lulus</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal group rounded-3xl bg-gradient-to-br from-slate-800 to-slate-950 p-8 card-hover relative overflow-hidden">
-            <div class="blob w-40 h-40 bg-blue-500/20 -top-10 -right-10"></div>
-            <p class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Startup</p>
-            <h3 class="mt-4 font-heading text-xl font-bold text-white">Segara Teknologi</h3>
-            <p class="mt-3 text-sm text-slate-400 leading-relaxed">Kepatuhan pajak & pencatatan sesuai standar investor untuk pendanaan Seri A.</p>
-            <div class="mt-6 grid grid-cols-2 gap-4">
-              <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-                <p class="font-heading text-2xl font-bold text-blue-400">US$ 2J</p>
-                <p class="text-xs text-slate-400 mt-1">Pendanaan Seri A</p>
-              </div>
-              <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-                <p class="font-heading text-2xl font-bold text-blue-400">100%</p>
-                <p class="text-xs text-slate-400 mt-1">Kepatuhan pajak</p>
-              </div>
-            </div>
+          <div class="col-span-full text-center py-12">
+            <p class="text-sm text-slate-500">Tidak ada studi kasus yang tersedia saat ini.</p>
           </div>
         @endforelse
       </div>
@@ -586,7 +469,7 @@ home
         @forelse ($teamMembers as $member)
           @php $initials = collect(str_word_count($member->name, 1))->take(2)->map(fn ($w) => strtoupper(mb_substr($w, 0, 1)))->join(''); @endphp
           <div class="reveal group bg-white rounded-2xl border border-slate-100 p-6 text-center card-hover">
-            <span class="mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-700 to-slate-900 flex items-center justify-center font-heading text-3xl font-bold text-white">{{ $initials }}</span>
+            <span class="mx-auto w-24 h-24 rounded-2xl bg-blue-700 flex items-center justify-center font-heading text-3xl font-bold text-white">{{ $initials }}</span>
             <h3 class="mt-5 font-heading font-bold text-slate-900">{{ $member->name }}</h3>
             <p class="text-sm text-slate-500 mt-1">{{ $member->position }}</p>
             <div class="mt-4 flex items-center justify-center gap-1 text-amber-400">
@@ -604,7 +487,7 @@ home
   </section>
 
   <!-- ======= CTA ======= -->
-  <section class="relative bg-gradient-to-br from-blue-800 to-slate-900 overflow-hidden">
+  <section class="relative bg-blue-800 overflow-hidden">
     <div class="blob w-96 h-96 bg-white/10 -top-24 -right-24"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center reveal">
       <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white leading-tight max-w-3xl mx-auto">Siap Membuat Keuangan Bisnis Anda Lebih Rapi dan Terpercaya?</h2> 

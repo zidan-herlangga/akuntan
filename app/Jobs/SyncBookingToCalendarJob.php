@@ -8,7 +8,7 @@ use App\Models\Booking;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
-use Spatie\GoogleCalendar\GoogleCalendarFactory;
+use Spatie\GoogleCalendar\Event;
 
 class SyncBookingToCalendarJob implements ShouldQueue
 {
@@ -33,14 +33,12 @@ class SyncBookingToCalendarJob implements ShouldQueue
         }
 
         try {
-            GoogleCalendarFactory::createForCalendarId($calendarId)
-                ->createEvent([
-                    'name' => $this->eventName(),
-                    'description' => $this->eventDescription(),
-                    'startDateTime' => $this->booking->starts_at,
-                    'endDateTime' => $this->booking->ends_at,
-                    'recurrence' => [],
-                ]);
+            Event::create([
+                'name' => $this->eventName(),
+                'description' => $this->eventDescription(),
+                'startDateTime' => $this->booking->starts_at,
+                'endDateTime' => $this->booking->ends_at,
+            ]);
         } catch (\Throwable $e) {
             Log::error('Failed to sync booking to Google Calendar.', [
                 'booking' => $this->booking->booking_number,
@@ -55,7 +53,7 @@ class SyncBookingToCalendarJob implements ShouldQueue
     {
         $service = $this->booking->service?->title;
 
-        return 'Konsultasi'.($service ? ": {$service}" : '').' — '.$this->booking->client_name;
+        return 'Konsultasi'.($service ? ": {$service}" : '').' - '.$this->booking->client_name;
     }
 
     private function eventDescription(): string
