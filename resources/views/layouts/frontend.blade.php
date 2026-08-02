@@ -47,7 +47,7 @@
         </span>
         <div class="flex flex-col">
           <span class="text-base sm:text-lg font-bold text-white font-heading tracking-tight leading-tight">
-            Drs. Chaeroni <span class="text-blue-400">&amp; Rekan</span>
+            Drs. Chaeroni <span class="text-blue-400">&amp; </span>
           </span>
           <span class="text-[10px] text-white/70 font-normal">Registered Public Accountants</span>
         </div>
